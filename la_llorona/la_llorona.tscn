@@ -1,0 +1,24 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://la_llorona/la_llorona0000.png" type="Texture" id=1]
+[ext_resource path="res://la_llorona/la_llorona0006.png" type="Texture" id=2]
+[ext_resource path="res://la_llorona/la_llorona0003.png" type="Texture" id=3]
+[ext_resource path="res://la_llorona/la_llorona0004.png" type="Texture" id=4]
+[ext_resource path="res://la_llorona/la_llorona0005.png" type="Texture" id=5]
+[ext_resource path="res://la_llorona/la_llorona0001.png" type="Texture" id=6]
+[ext_resource path="res://la_llorona/la_llorona0002.png" type="Texture" id=7]
+
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ ExtResource( 1 ), ExtResource( 6 ), ExtResource( 7 ), ExtResource( 3 ), ExtResource( 5 ), ExtResource( 4 ), ExtResource( 2 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
+[node name="la_llorona" type="Node2D"]
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+frames = SubResource( 1 )
+frame = 6
+playing = true
