@@ -76,5 +76,4 @@ autoplay = true
 
 [node name="camera" type="Camera2D" parent="."]
 anchor_mode = 0
-current = true
 script = ExtResource( 13 )
