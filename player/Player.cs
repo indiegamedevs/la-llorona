@@ -56,16 +56,17 @@ public class Player : KinematicBody2D
 			animatedSprite.Play();
 			if(_velocity.x < 0) {
 				animatedSprite.FlipH = true;
-                _lookingRight = false;
+				_lookingRight = false;
 				GetParent<Stage>().MoveBackgroundLeft();
 			} else {
 				animatedSprite.FlipH = false;
-                _lookingRight = true;
+				_lookingRight = true;
 				GetParent<Stage>().MoveBackgroundRight();
 			}
 		} else {
 			animatedSprite.Stop();
 		}
 		_velocity = MoveAndSlide(_velocity, new Vector2(0, -1));
+		GetParent<Stage>().MoveCamera(Position);
 	}
 }

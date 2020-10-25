@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://background/background.tscn" type="PackedScene" id=1]
 [ext_resource path="res://platform1.png" type="Texture" id=2]
@@ -12,6 +12,7 @@
 [ext_resource path="res://la_llorona/la_llorona.tscn" type="PackedScene" id=10]
 [ext_resource path="res://sounds/music.wav" type="AudioStream" id=11]
 [ext_resource path="res://Stage.cs" type="Script" id=12]
+[ext_resource path="res://Camera.cs" type="Script" id=13]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 534.498, 27.798 )
@@ -72,3 +73,8 @@ position = Vector2( 204.107, 541.766 )
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 11 )
 autoplay = true
+
+[node name="camera" type="Camera2D" parent="."]
+anchor_mode = 0
+current = true
+script = ExtResource( 13 )
