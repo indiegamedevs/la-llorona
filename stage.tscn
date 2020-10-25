@@ -65,7 +65,7 @@ texture = ExtResource( 8 )
 position = Vector2( 758.413, 625.675 )
 
 [node name="la_llorona" parent="." instance=ExtResource( 10 )]
-position = Vector2( 546.806, 566.964 )
+position = Vector2( 204.107, 541.766 )
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 11 )
