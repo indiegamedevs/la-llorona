@@ -54,8 +54,15 @@ public class Player : KinematicBody2D
 		var animatedSprite = GetNode<AnimatedSprite>("AnimatedSprite");
 		if(_velocity.x != 0) {
 			animatedSprite.Play();
-			animatedSprite.FlipH = _velocity.x < 0;
-			_lookingRight = _velocity.x > 0;
+			if(_velocity.x < 0) {
+				animatedSprite.FlipH = true;
+                _lookingRight = false;
+				GetParent<Stage>().MoveBackgroundLeft();
+			} else {
+				animatedSprite.FlipH = false;
+                _lookingRight = true;
+				GetParent<Stage>().MoveBackgroundRight();
+			}
 		} else {
 			animatedSprite.Stop();
 		}
