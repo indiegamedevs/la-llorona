@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://background/background.tscn" type="PackedScene" id=1]
 [ext_resource path="res://platform1.png" type="Texture" id=2]
@@ -10,6 +10,7 @@
 [ext_resource path="res://bridge.png" type="Texture" id=8]
 [ext_resource path="res://player/player.tscn" type="PackedScene" id=9]
 [ext_resource path="res://la_llorona/la_llorona.tscn" type="PackedScene" id=10]
+[ext_resource path="res://sounds/music.wav" type="AudioStream" id=11]
 
 [node name="stage" type="Node2D"]
 
@@ -57,3 +58,7 @@ Speed = 100
 
 [node name="la_llorona" parent="." instance=ExtResource( 10 )]
 position = Vector2( 546.806, 566.964 )
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 11 )
+autoplay = true
