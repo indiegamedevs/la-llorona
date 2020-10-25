@@ -1,7 +1,7 @@
 using Godot;
 using System;
 
-public class player : KinematicBody2D
+public class Player : KinematicBody2D
 {
 	[Export]
 	public int RunSpeed = 100;
@@ -13,6 +13,14 @@ public class player : KinematicBody2D
 	private Vector2 _screenSize;
 	private Vector2 _velocity = new Vector2();
 	private bool _jumping = false;
+	private bool _lookingRight = true;
+
+	public bool LookingRight
+	{
+		get {
+			return _lookingRight;
+		}
+	}
 
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
@@ -47,6 +55,7 @@ public class player : KinematicBody2D
 		if(_velocity.x != 0) {
 			animatedSprite.Play();
 			animatedSprite.FlipH = _velocity.x < 0;
+			_lookingRight = _velocity.x > 0;
 		} else {
 			animatedSprite.Stop();
 		}
