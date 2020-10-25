@@ -1,0 +1,21 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://intro/intro.png" type="Texture" id=1]
+[ext_resource path="res://intro/play.png" type="Texture" id=2]
+
+[node name="intro" type="Sprite"]
+texture = ExtResource( 1 )
+centered = false
+
+[node name="Button" type="Button" parent="."]
+margin_left = 660.199
+margin_top = 645.08
+margin_right = 1173.2
+margin_bottom = 814.08
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="play" type="Sprite" parent="Button"]
+position = Vector2( 249.758, 86.5099 )
+texture = ExtResource( 2 )
