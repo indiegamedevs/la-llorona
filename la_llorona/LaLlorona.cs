@@ -5,6 +5,8 @@ public class LaLlorona : KinematicBody2D
 {
 	[Export]
 	public int RunSpeed = 95;
+	
+	public bool StartSpooking = true;
 
 	Player player;
 
@@ -17,6 +19,7 @@ public class LaLlorona : KinematicBody2D
 
 	public override void _PhysicsProcess(float delta)
 	{  
+		if(StartSpooking) {
 		var velocity = Position.DirectionTo(player.Position) * RunSpeed;
 		var animatedSprite = GetNode<AnimatedSprite>("AnimatedSprite");
 
@@ -47,6 +50,7 @@ public class LaLlorona : KinematicBody2D
 				velocity = MoveAndSlide(velocity);
 				animatedSprite.FlipH = false;
 			}
+		}
 		}
 	}
 }
