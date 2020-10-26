@@ -3,6 +3,9 @@ using System;
 
 public class Animation : AnimationPlayer
 {
+	[Signal]
+	public delegate void FaceDone();
+	
 	private bool hasPlayed;
 
 	// Called when the node enters the scene tree for the first time.
@@ -15,7 +18,7 @@ public class Animation : AnimationPlayer
 	{
 		if (hasPlayed && !IsPlaying())
 		{
-			GetTree().ChangeScene("res://stage.tscn");
+			EmitSignal(nameof(FaceDone));
 		}
 
 		if (!hasPlayed && !IsPlaying())
