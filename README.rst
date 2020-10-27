@@ -1,6 +1,8 @@
 La Llorona
 ==========
 
+.. image:: la-llorona.png
+
 La Llorona is a platform game we created for the `Spooky Game Jam Midwest 2020`_.
 
 The build we submitted to the jam can be `played on Itch.io`_.  Unfortunately,
