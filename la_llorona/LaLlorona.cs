@@ -23,7 +23,18 @@ public class LaLlorona : KinematicBody2D
 		var velocity = Position.DirectionTo(player.Position) * RunSpeed;
 		var animatedSprite = GetNode<AnimatedSprite>("AnimatedSprite");
 
-		if (velocity.x > 0)
+		var collide = MoveAndCollide(velocity * delta);
+		if (collide != null)
+		{
+			var node = (Godot.Node2D)collide.Collider;
+			if (node.Name == "player")
+			{
+				var global = (Global)GetNode("/root/Global");
+				global.GotoScene("res://face/face.tscn");
+			}
+		}
+
+			if (velocity.x > 0)
 		{
 			if (player.LookingRight)
 			{

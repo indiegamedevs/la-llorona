@@ -18,7 +18,8 @@ public class Animation : AnimationPlayer
 	{
 		if (hasPlayed && !IsPlaying())
 		{
-			EmitSignal(nameof(FaceDone));
+			var global = (Global)GetNode("/root/Global");
+			global.GotoScene("res://stage.tscn");
 		}
 
 		if (!hasPlayed && !IsPlaying())
