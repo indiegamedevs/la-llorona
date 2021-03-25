@@ -67,6 +67,26 @@ public class Player : KinematicBody2D
 			animatedSprite.Stop();
 		}
 		_velocity = MoveAndSlide(_velocity, new Vector2(0, -1));
+		var collide = MoveAndCollide(_velocity * delta);
+		if (collide != null) {
+			var node = (Godot.Node2D)collide.Collider;
+			if (node.Name != "Platform1")
+			{
+				GD.Print(node.Name);
+
+			}
+			if (node.Name == "la_llorona") {
+				var global = (Global)GetNode("/root/Global");
+				global.GotoScene("res://face/face.tscn");
+			}
+		}
+		
 		GetParent<Stage>().MoveCamera(Position);
+	}
+	
+	public void OnPlayerBodyEntered(Godot.Object body)
+	{
+			var global = (Global)GetNode("/root/Global");
+			global.GotoScene("res://face/face.tscn");
 	}
 }

@@ -22,11 +22,12 @@ radius = 34.7711
 height = 45.2247
 
 [node name="la_llorona" type="KinematicBody2D"]
+collision_layer = 2
 script = ExtResource( 8 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 frames = SubResource( 1 )
-frame = 1
+frame = 2
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
