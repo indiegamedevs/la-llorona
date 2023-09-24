@@ -1,34 +1,54 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=11 format=3 uid="uid://e4fxi3e236it"]
 
-[ext_resource path="res://la_llorona/la_llorona0000.png" type="Texture" id=1]
-[ext_resource path="res://la_llorona/la_llorona0006.png" type="Texture" id=2]
-[ext_resource path="res://la_llorona/la_llorona0003.png" type="Texture" id=3]
-[ext_resource path="res://la_llorona/la_llorona0004.png" type="Texture" id=4]
-[ext_resource path="res://la_llorona/la_llorona0005.png" type="Texture" id=5]
-[ext_resource path="res://la_llorona/la_llorona0001.png" type="Texture" id=6]
-[ext_resource path="res://la_llorona/la_llorona0002.png" type="Texture" id=7]
-[ext_resource path="res://la_llorona/LaLlorona.cs" type="Script" id=8]
+[ext_resource type="Texture2D" uid="uid://d21u6cnm57tox" path="res://la_llorona/la_llorona0000.png" id="1"]
+[ext_resource type="Texture2D" uid="uid://cphxmqbih2vb2" path="res://la_llorona/la_llorona0006.png" id="2"]
+[ext_resource type="Texture2D" uid="uid://diuieoqn1yx4x" path="res://la_llorona/la_llorona0003.png" id="3"]
+[ext_resource type="Texture2D" uid="uid://bhq8h588a2q26" path="res://la_llorona/la_llorona0004.png" id="4"]
+[ext_resource type="Texture2D" uid="uid://b17v4oswuo3p" path="res://la_llorona/la_llorona0005.png" id="5"]
+[ext_resource type="Texture2D" uid="uid://das5j14svkgn6" path="res://la_llorona/la_llorona0001.png" id="6"]
+[ext_resource type="Texture2D" uid="uid://caibcodasm2bh" path="res://la_llorona/la_llorona0002.png" id="7"]
+[ext_resource type="Script" path="res://la_llorona/LaLlorona.cs" id="8"]
 
-[sub_resource type="SpriteFrames" id=1]
-animations = [ {
-"frames": [ ExtResource( 1 ), ExtResource( 6 ), ExtResource( 7 ), ExtResource( 3 ), ExtResource( 5 ), ExtResource( 4 ), ExtResource( 2 ) ],
+[sub_resource type="SpriteFrames" id="1"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2")
+}],
 "loop": true,
-"name": "default",
+"name": &"default",
 "speed": 5.0
-} ]
+}]
 
-[sub_resource type="CapsuleShape2D" id=2]
-radius = 34.7711
-height = 45.2247
+[sub_resource type="CapsuleShape2D" id="2"]
+radius = 32.0
+height = 128.0
 
-[node name="la_llorona" type="KinematicBody2D"]
+[node name="la_llorona" type="CharacterBody2D"]
 collision_layer = 2
-script = ExtResource( 8 )
+script = ExtResource("8")
 
-[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
-frames = SubResource( 1 )
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("1")
 frame = 2
-playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource( 2 )
+shape = SubResource("2")

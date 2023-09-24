@@ -1,45 +1,45 @@
 using Godot;
 using System;
 
-public class Global : Godot.Node
+public partial class Global : Godot.Node
 {
-	public Node CurrentScene { get; set; }
+    public Node CurrentScene { get; set; }
 
-	public override void _Ready()
-	{
-		Viewport root = GetTree().GetRoot();
-		CurrentScene = root.GetChild(root.GetChildCount() - 1);
-	}
-	
-	public void GotoScene(string path)
-	{
-		// This function will usually be called from a signal callback,
-		// or some other function from the current scene.
-		// Deleting the current scene at this point is
-		// a bad idea, because it may still be executing code.
-		// This will result in a crash or unexpected behavior.
+    public override void _Ready()
+    {
+        Window root = GetTree().Root;
+        CurrentScene = root.GetChild(GetTree().Root.GetChildCount() - 1);
+    }
 
-		// The solution is to defer the load to a later time, when
-		// we can be sure that no code from the current scene is running:
+    public void GotoScene(string path)
+    {
+        // This function will usually be called from a signal callback,
+        // or some other function from the current scene.
+        // Deleting the current scene at this point is
+        // a bad idea, because it may still be executing code.
+        // This will result in a crash or unexpected behavior.
 
-		CallDeferred(nameof(DeferredGotoScene), path);
-	}
+        // The solution is to defer the load to a later time, when
+        // we can be sure that no code from the current scene is running:
 
-	public void DeferredGotoScene(string path)
-	{
-		// It is now safe to remove the current scene
-		CurrentScene.Free();
+        CallDeferred(nameof(DeferredGotoScene), path);
+    }
 
-		// Load a new scene.
-		var nextScene = (PackedScene)GD.Load(path);
+    public void DeferredGotoScene(string path)
+    {
+        // It is now safe to remove the current scene
+        CurrentScene.Free();
 
-		// Instance the new scene.
-		CurrentScene = nextScene.Instance();
+        // Load a new scene.
+        var nextScene = (PackedScene)GD.Load(path);
 
-		// Add it to the active scene, as child of root.
-		GetTree().GetRoot().AddChild(CurrentScene);
+        // Instance the new scene.
+        CurrentScene = nextScene.Instantiate();
 
-		// Optionally, to make it compatible with the SceneTree.change_scene() API.
-		GetTree().SetCurrentScene(CurrentScene);
-	}
+        // Add it to the active scene, as child of root.
+        GetTree().Root.AddChild(CurrentScene);
+
+        // Optionally, to make it compatible with the SceneTree.change_scene() API.
+        GetTree().CurrentScene = CurrentScene;
+    }
 }
